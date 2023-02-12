@@ -21,7 +21,8 @@ mongoose.connect(`mongodb+srv://${process.env.DB_USER}:${process.env.DB_PASSWORD
 })
 .then(()=> console.log('DB connected'))
 .catch((err)=> console.log(err))
-
+const userRoute = require("./routes/userRoutes");
+app.use("/user", userRoute);
 
 
 app.listen(port, ()=> console.log(`malco running on ${port}`))
