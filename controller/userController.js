@@ -60,7 +60,9 @@ const userController = {
       const email = req.params.email;
       const query = {email}
       const user = await User.findOne(query);
-      res.send(user)
+      if (user?.role === 'admin') {
+        return res.status(403).send({ message: 'admin' })
+    }
     }catch (error) {
       res.status(200).json({
         message: error.message,
